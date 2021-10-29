@@ -8,18 +8,13 @@ pygame.display.set_caption("pygame")
 fps = pygame.time.Clock()
 
 play = True
-create = True
-move = 600  #오른쪽에서 다가오는 공의 전체적인 위치 설정
-
-red = (255,0,0)
-black = (0,0,0)
-color = [red, black]
-count = 0 #색을 정하는 
+create = True #create가 True라면 오른쪽에서 다가오는 원을 생성함
+move = 600  #오른쪽에서 다가오는 원의 전체적인 위치 설정
 
 while play:
     deltaTime = fps.tick(60) 
     background.fill((0,0,0)) 
-    pygame.draw.circle(background, (255,255,255), (120,180), 30) #왼쪽에 존재하는 하얀 공
+    pygame.draw.circle(background, (255,255,255), (120,180), 30) #왼쪽에 존재하는 하얀 원
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             play = False               
@@ -41,7 +36,7 @@ while play:
         if move >= 0:   #move값이 0 이상일 때
             count = 0   #count를 0(붉은 색)으로 설정
             pygame.draw.circle(background, ((255, 0, 0)), ((move,180)), 30)  #오른쪽에서 다가오는 원 생성
-            move -= 7   #move 값을 -5씩 계속 줄여줘서 왼쪽으로 공이 움직이게 만듦
+            move -= 7   #move 값을 -5씩 계속 줄여줘서 왼쪽으로 원이 움직이게 만듦
         else:
             move = 600  #move값이 0 미만 일때, move값을 600으로 초기화 시켜줘서 다시 오른쪽으로 가게 함
     pygame.display.update()
